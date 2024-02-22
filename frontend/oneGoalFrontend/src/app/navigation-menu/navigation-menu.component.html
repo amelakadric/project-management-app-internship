@@ -1,0 +1,36 @@
+ <ng-container *ngIf="user$ | async as user; else defaultTemplate">
+<ng-container [ngSwitch]="user.role">
+
+
+<div *ngSwitchCase="Roles.EMPLOYEE" class="fixed top-0 w-full bg-white h-14 flex flex-row shadow-lg">
+  <div class="pl-16 self-center">
+    <a routerLinkActive="active" routerLink="/projects" class="text-cyan-700 hover:text-cyan-500">Projects</a>
+  </div>
+  <a (click)="logout()" class="ml-auto mr-4 pr-16 self-center text-cyan-700 hover:text-cyan-500">Log Out</a>
+</div>
+
+  <div *ngSwitchCase="Roles.MANAGER" class="fixed top-0 w-full bg-white h-14 flex flex-row shadow-lg">
+    <div class="pl-16 self-center">
+      <a routerLinkActive="active" routerLink="/projects" class="text-cyan-700 hover:text-cyan-500">Projects</a>
+    </div>
+    <a (click)="logout()" class="ml-auto mr-4 pr-16 self-center text-cyan-700 hover:text-cyan-500">Log Out</a>
+  </div>
+<div *ngSwitchCase="Roles.ADMIN" class="fixed top-0 w-full bg-white h-14 flex flex-row shadow-lg">
+  <div class="pl-16 self-center">
+    <a routerLinkActive="active" routerLink="/projects" class="text-cyan-700 hover:text-cyan-500">Projects</a>
+    <a routerLinkActive="active" routerLink="/users" class="pr-16 pl-16 text-cyan-700 hover:text-cyan-500">Users</a>
+  </div>
+  <a (click)="logout()" class="ml-auto mr-4 pr-16 self-center text-cyan-700 hover:text-cyan-500">Log Out</a>
+
+</div>
+</ng-container>
+</ng-container>
+
+<ng-template #defaultTemplate>
+  <div class="fixed top-0 w-full bg-white h-14 flex flex-row shadow-lg">
+    <div class="pl-16 self-center ml-auto">
+      <a routerLinkActive="active" routerLink="/login" class="text-cyan-700 hover:text-cyan-500">Log In</a>
+      <a routerLinkActive="active" routerLink="/register" class="pr-16 pl-16 text-cyan-700 hover:text-cyan-500">Register</a>
+    </div>
+  </div>
+</ng-template>

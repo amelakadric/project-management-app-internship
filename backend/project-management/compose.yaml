@@ -1,0 +1,37 @@
+services:
+  project-management-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    volumes:
+      - ./:/usr/src/app/
+    env_file:
+      - .env
+  db:
+    image: postgres:alpine
+    restart: always
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+  cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    depends_on:
+      - db
+    command: ['npm', 'run', 'migration:run']
+
+volumes:
+  db-data:

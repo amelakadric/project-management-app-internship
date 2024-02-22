@@ -1,0 +1,41 @@
+<div class="flex h-full justify-center text-center" id="container" *ngIf="employees$ | async as employees">
+  <ng-container *ngIf="ticket$ | async as ticket">
+    <div class="flex-col space-y-6 bg-gray-50 shadow-inner rounded-lg w-1/3 h-2/3 py-10 self-center">
+      <h2 class="text-cyan-700">Ticket Details</h2>
+      <div>
+        <p><b>Title:</b> {{ticket.title}}</p>
+      </div>
+
+      <div>
+        <p><b>Description:</b> {{ticket.description}}</p>
+       </div>
+
+      <div>
+        <p><b>Project:</b> {{ticket.project.name}}</p>
+      </div>
+
+      <div>
+        <p><b>Created By:</b> {{ticket.createdBy.firstname}} {{ticket.createdBy.lastname}}</p>
+      </div>
+
+      <div>
+        <p><b>Assigned To:</b> {{ticket.assignedTo.firstname}} {{ticket.assignedTo.lastname}}</p>
+      </div>
+
+      <div>
+        <p><b>Type:</b> {{ticket.type}}</p>
+      </div>
+
+      <div>
+        <p><b>Priority:</b> {{ticket.priority}}</p>
+      </div>
+
+      <div>
+        <p><b>Status:</b> {{ticket.status}}</p>
+      </div>
+
+      <button (click)="backToProject(ticket)" class="btn-page">Back</button>
+    </div>
+  </ng-container>
+</div>
+

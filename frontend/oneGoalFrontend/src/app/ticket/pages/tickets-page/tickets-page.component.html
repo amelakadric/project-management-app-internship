@@ -1,0 +1,38 @@
+<div id="page-body" *ngIf="project$ | async as project">
+<h1 class="mt-16 mb-10 text-center text-2xl text-darkBlue">{{project.name}}</h1>
+<div id="page-container">
+  <ng-container *ngIf="employees">
+  <ng-container *ngIf="projectId">
+<ng-container *ngIf="tickets$ | async as tickets">
+        <div class="flex flex-row justify-center mb-10 mt-10">
+            <input (input)="searchForTitle(search.value)" placeholder="Search" class="input-basic mr-7" #search/>
+
+            <button (click)="sortByPriority()" class="btn-page mr-7">Sort by Priority</button>
+
+          <div>
+            <label for="type" class="self-center">Type: </label>
+            <select id="type" [(ngModel)]="typeSelectedOption" (change)="changeType()" class="input-basic ml-3 mr-7 w-32 h-7">
+              <option [value]="'all'">all</option>
+              <option *ngFor="let type of Object.values(Types)" [value]="type">{{type}}</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="user" class="self-center">Assigned To: </label>
+            <select id="user" [(ngModel)]="userSelectedOption" (change)="changeUser()" class="input-basic h-7 ml-3 mr-7 w-32">
+              <option value="-1">all</option>
+              <option *ngFor="let employee of employees" value="{{employee.id}}">{{employee.firstname}} {{employee.lastname}}</option>
+            </select>
+          </div>
+
+          <button (click)="createTicket()" class="btn-page">Create Ticket</button>
+        </div>
+
+        <app-tickets-board [tickets]="tickets" [projectId]="projectId" (updatedStatus)="updateStatus($event)"></app-tickets-board>
+
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+</div>
+

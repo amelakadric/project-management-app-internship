@@ -1,0 +1,23 @@
+@use '../../styles.scss' as base;
+
+#login-body {
+  height: 100%;
+  margin: 0;
+  min-height: 100vh;
+
+  #container{
+    min-height: 100vh;
+
+    ::ng-deep .mat-form-field-label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(-50%);
+      background-color: white;
+      padding: 0 8px;
+      border-style: none !important;
+      display:none;
+    }
+  }
+}
+

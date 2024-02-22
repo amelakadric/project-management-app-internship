@@ -1,0 +1,40 @@
+<div class="flex h-full justify-center text-center" id="container" *ngIf="employees">
+<ng-container *ngIf="project$ | async as project">
+  <form [formGroup]="createTicketForm" (ngSubmit)="createTicket(employees, project)" class="flex-col space-y-6 bg-bgGray shadow-inner rounded-lg w-1/3 h-3/5 mt-36 py-10">
+    <h2 class="text-darkBlue">Create Ticket</h2>
+    <div>
+      <input id="title" formControlName="title" placeholder="Title" class="input-basic w-50 h-8 ml-1.5">
+    </div>
+
+    <div>
+      <input id="description" formControlName="description" placeholder="Description" class="input-basic w-50 h-8 ml-1.5">
+    </div>
+
+    <div>
+      <select id="assignedTo" formControlName="assignedTo" class="text-gray-400 input-basic w-50 h-8 ml-1.5">
+        <option value="" disabled selected>Assigned To</option>
+        <option *ngFor="let employee of employees" value="{{employee.id}}">{{employee.firstname}} {{employee.lastname}}</option>
+      </select>
+    </div>
+
+    <div>
+      <select id="type" formControlName="type" class="text-gray-400 input-basic w-50 h-8 ml-1.5">
+        <option value="" disabled selected>Type</option>
+        <option *ngFor="let type of Object.values(Types)" [value]="type">{{type}}</option>
+      </select>
+    </div>
+
+    <div>
+      <select id="priority" formControlName="priority" class="text-gray-400 input-basic w-50 h-8 ml-1.5">
+        <option value="" disabled selected>Priority</option>
+        <option *ngFor="let priority of priority" [value]="priority">{{priority}}</option>
+      </select>
+    </div>
+
+    <div class="pt-3">
+      <button type="submit" class="btn-basic">Create</button>
+    </div>
+  </form>
+</ng-container>
+</div>
+

@@ -1,0 +1,7 @@
+<div class="absolute w-32" id="div-options">
+  <button (click)="toggleDropdown()">...</button>
+  <ul *ngIf="showDropdown" class="bg-bgGray w-16 p-1.5 shadow-inner text-sm">
+    <li (click)="handleAction(Operations.UPDATE)" class="hover:text-darkBlue">Update</li>
+    <li (click)="handleAction(Operations.DELETE)" class="hover:text-darkBlue">Delete</li>
+  </ul>
+</div>

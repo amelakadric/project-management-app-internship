@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": false,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-unreachable": "error",
+    "no-console": "error",
+    "curly": "error",
+    "no-useless-return": "error",
+    "no-useless-concat": "error",
+    "no-useless-rename": "error",
+    "no-useless-escape": "error",
+    "no-useless-constructor": "off",
+    "@typescript-eslint/semi": "error",
+    "eqeqeq": "error",
+    "camelcase": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  "ignorePatterns": ["**/*seeder.*.ts", "**/*spec.ts", "migration-cli.ts", "dist/*"]
+}

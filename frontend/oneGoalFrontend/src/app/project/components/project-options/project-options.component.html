@@ -1,0 +1,12 @@
+<div class="absolute" id="div-options">
+  <button (click)="toggleDropdown()">...</button>
+  <ul *ngIf="showDropdown" class="bg-bgGray w-20 p-1.5 shadow-inner text-sm">
+    <li (click)="handleAction(Operations.ADD)" class="hover:text-darkBlue">Add ticket</li>
+    <ng-container *ngIf="role === Roles.ADMIN || role === Roles.MANAGER">
+    <li (click)="handleAction(Operations.UPDATE)" class="hover:text-darkBlue">Update</li>
+      <ng-container *ngIf="role === Roles.ADMIN">
+    <li (click)="handleAction(Operations.DELETE)" class="hover:text-darkBlue">Delete</li>
+      </ng-container>
+    </ng-container>
+  </ul>
+</div>

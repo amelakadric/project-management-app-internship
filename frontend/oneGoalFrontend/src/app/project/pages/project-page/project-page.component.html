@@ -1,0 +1,11 @@
+<div class="pt-24" *ngIf="currentUser$ | async as currentUser">
+<h1 class="mb-10 text-center text-2xl text-darkBlue">Projects</h1>
+  <ng-container *ngIf="currentUser.role === Roles.ADMIN">
+<button (click)="createProject()" class="btn-page w-60 ml-24 mb-14">Create New Project</button>
+  </ng-container>
+<div class="grid grid-cols-3 ml-24">
+  <ng-container *ngFor="let project of projects$ | async">
+    <app-project-card [project] = "project" [role]="currentUser.role" (delete)="actionToDelete($event)"></app-project-card>
+  </ng-container>
+</div>
+</div>

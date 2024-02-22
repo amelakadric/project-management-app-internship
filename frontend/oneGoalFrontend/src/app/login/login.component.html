@@ -1,0 +1,25 @@
+<body id="login-body">
+<div class="flex h-full justify-center text-center" id="container">
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="flex-col space-y-6 bg-bgGray shadow-inner rounded-lg w-1/3 h-2/5 mt-56 py-10">
+    <h2 class="text-darkBlue">Log in to continue</h2>
+
+    <div>
+      <input type="text" formControlName="email" id="email" placeholder="Email" class="input-basic w-50 h-10 ml-1.5"/>
+    </div>
+
+    <div>
+      <input type="password" formControlName="password" id="password" placeholder="Password" class="input-basic w-50 h-10 ml-1.5"/>
+    </div>
+
+    <div>
+      <button type="submit" class="btn-basic w-50 h-10">Log In</button><br>
+      <button type="button" (click)="navigate()" class="text-xs text-darkBlue">Create an account</button>
+    </div>
+
+  </form>
+</div>
+</body>
+
+
+

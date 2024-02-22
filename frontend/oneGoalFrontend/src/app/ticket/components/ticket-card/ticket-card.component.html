@@ -1,0 +1,17 @@
+<ng-container *ngIf="ticket">
+<div class="flex flex-col w-64 h-30 bg-white mt-4 mb-2 rounded-lg px-4 py-2" [ngClass]="{'low-priority': ticket.priority === Priorities.LOW, 'medium-priority': ticket.priority === Priorities.MEDIUM, 'high-priority': ticket.priority === Priorities.HIGH}">
+  <div class="flex flex-row">
+    <p class="text-lg font-bold text-black">{{ticket.title}}</p>
+    <app-ticket-options (action)="responseToAction($event)" class="ml-auto mr-3"></app-ticket-options>
+  </div>
+
+  <div class="flex flex-row align-middle">
+    <mat-icon>account_box</mat-icon>
+    <p class="pt-1"> {{ticket.assignedTo.firstname}} {{ticket.assignedTo.lastname}}</p>
+  </div>
+
+  <div class="flex justify-center pb-1.5">
+    <img [src]="makeStatusImage()" alt="Task status" height="30" width="60">
+  </div>
+</div>
+</ng-container>

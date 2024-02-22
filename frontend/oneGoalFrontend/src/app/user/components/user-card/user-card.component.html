@@ -1,0 +1,24 @@
+<ng-container *ngIf="user">
+<div class="flex flex-col space-y-2 w-4/5 h-42 shadow-inner bg-bgGray mt-4 mb-2 rounded-lg px-4 py-2">
+  <div class="flex flex-row">
+    <p class="text-xl pt-1 font-bold text-darkBlue">{{user.firstname}} {{user.lastname}}</p>
+    <app-user-options (action)="responseToAction($event)" class="ml-auto mr-3"></app-user-options>
+  </div>
+  <div class="flex flex-row justify-content-between">
+  <div class="flex flex-col align-middle">
+    <mat-icon class="text-lg self-center">accessibility</mat-icon>
+    <p class="pt-1">{{user.role}}</p>
+  </div>
+
+  <div class="flex flex-col align-middle pb-0">
+    <mat-icon class="text-base self-center">email</mat-icon>
+    <p class="pt-1">{{user.email}}</p>
+  </div>
+
+  <div class="flex flex-col align-middle">
+    <mat-icon class="text-base self-center">call</mat-icon>
+    <p class="pt-1">{{user.phoneNumber}}</p>
+  </div>
+  </div>
+</div>
+</ng-container>

@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-basic{
+  background-color: theme('colors.primary');
+  border: 1px solid theme('colors.primary');
+  width: 120px;
+  height: 30px;
+  border-radius: 3% / 20%;
+  color: theme('colors.primary');
+
+  &:hover{
+    background-color: theme('colors.secondary');
+    border: 1px solid theme('colors.secondary');
+    color: white;
+  }
+}
+
+.btn-page{
+  background-color: theme('colors.primary');
+  border: 1px solid theme('colors.primary');
+  width: 120px;
+  height: 30px;
+  border-radius: 3% / 20%;
+  color: white;
+
+  &:hover{
+    background-color: theme('colors.secondary');
+    border: 1px solid theme('colors.secondary');
+    color: white;
+  }
+}

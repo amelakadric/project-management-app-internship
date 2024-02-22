@@ -1,0 +1,49 @@
+<div class="flex flex-col h-full justify-center text-center" id="container" *ngIf="employees">
+<ng-container *ngIf="ticket$ | async as ticket">
+  <form [formGroup]="updateTicketForm" (ngSubmit)="updateTicket(employees, ticket)" class="flex flex-col space-y-6 bg-bgGray shadow-inner rounded-lg w-1/3 h-3/4 py-10 self-center">
+    <h2 class="text-darkBlue">Update Ticket</h2>
+    <div class="flex flex-col w-50 self-center">
+      <label for="title" class="text-xs text-gray-400 self-start pl-2">Title: </label>
+      <input id="title" formControlName="title" class="input-basic h-7 ml-1.5" placeholder="{{ticket.title}}"/>
+    </div>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="description" class="text-xs text-gray-400 self-start pl-2">Description: </label>
+      <input id="description" formControlName="description" class="input-basic h-7 ml-1.5" placeholder="{{ticket.description}}"/>
+    </div>
+
+<!--    <div>-->
+<!--      <label for="createdBy">Created By: </label>-->
+<!--      <select id="createdBy" formControlName="createdBy" class="input-basic">-->
+<!--        <option *ngFor="let employee of employees" [value]="employee.id">{{employee.firstname}} {{employee.lastname}}</option>-->
+<!--      </select>-->
+<!--    </div>-->
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="type" class="text-xs text-gray-400 self-start pl-2">Type: </label>
+      <select id="type" formControlName="type" class="input-basic h-7 ml-1.5" [(ngModel)]="ticket.type">
+        <option *ngFor="let type of Object.values(Types)" [value]="type">{{type}}</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="priority" class="text-xs text-gray-400 self-start pl-2">Priority: </label>
+      <select id="priority" formControlName="priority" class="input-basic h-7 ml-1.5" [(ngModel)]="ticket.priority">
+        <option *ngFor="let priority of priority" [value]="priority">{{priority}}</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="status" class="text-xs text-gray-400 self-start pl-2">Status: </label>
+      <select id="status" formControlName="status" class="input-basic h-7 ml-1.5" [(ngModel)]="ticket.status">
+        <option *ngFor="let status of Object.values(Statuses)" [value]="status">{{status}}</option>
+      </select>
+    </div>
+
+    <div class="pt-3">
+      <button type="submit" class="btn-basic h-7">Update</button>
+    </div>
+  </form>
+</ng-container>
+</div>
+

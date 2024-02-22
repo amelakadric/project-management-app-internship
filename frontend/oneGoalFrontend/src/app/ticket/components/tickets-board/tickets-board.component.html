@@ -1,0 +1,68 @@
+<div id="component-body">
+<div class="flex flex-row" id="container">
+  <div class="list-container">
+    <h3 class="text-center">Back Log</h3>
+    <div cdkDropList
+         #backlogList="cdkDropList"
+         [id]="'0'"
+         [cdkDropListConnectedTo]="[doneList, inProgressList, toDoList]"
+         [cdkDropListData]="backlogTickets"
+         (cdkDropListDropped)="drop($event)"
+         class="lists"
+    >
+      @for (ticket of backlogTickets; track ticket) {
+        <app-ticket-card [ticket] = "ticket" (delete)="actionToDelete($event)" cdkDrag></app-ticket-card>
+      }
+    </div>
+  </div>
+
+
+  <div class="list-container">
+    <h3 class="text-center">To Do</h3>
+    <div cdkDropList
+         #toDoList="cdkDropList"
+         [id]="'1'"
+         [cdkDropListConnectedTo]="[backlogList, inProgressList, doneList]"
+         [cdkDropListData]="toDoTickets"
+         (cdkDropListDropped)="drop($event)"
+         class="lists"
+    >
+      @for (ticket of toDoTickets; track ticket) {
+        <app-ticket-card [ticket] = "ticket" (delete)="actionToDelete($event)" cdkDrag></app-ticket-card>
+      }
+    </div>
+  </div>
+
+  <div class="list-container">
+    <h3 class="text-center">In Progress</h3>
+    <div cdkDropList
+         #inProgressList="cdkDropList"
+         [id]="'2'"
+         [cdkDropListConnectedTo]="[backlogList, toDoList, doneList]"
+         [cdkDropListData]="inProgressTickets"
+         (cdkDropListDropped)="drop($event)"
+         class="lists"
+    >
+      @for (ticket of inProgressTickets; track ticket) {
+        <app-ticket-card [ticket] = "ticket" (delete)="actionToDelete($event)" cdkDrag></app-ticket-card>
+      }
+    </div>
+  </div>
+
+  <div class="list-container">
+    <h3 class="text-center">Done</h3>
+    <div cdkDropList
+         #doneList="cdkDropList"
+         [id]="'3'"
+         [cdkDropListConnectedTo]="[backlogList, toDoList, inProgressList]"
+         [cdkDropListData]="doneTickets"
+         (cdkDropListDropped)="drop($event)"
+         class="lists"
+    >
+      @for (ticket of doneTickets; track ticket) {
+        <app-ticket-card [ticket] = "ticket" (delete)="actionToDelete($event)" cdkDrag></app-ticket-card>
+      }
+    </div>
+  </div>
+</div>
+</div>

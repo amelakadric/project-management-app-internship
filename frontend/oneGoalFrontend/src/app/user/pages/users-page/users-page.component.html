@@ -1,0 +1,9 @@
+<div class="pt-24">
+<h1 class="mt-16 mb-10 text-center text-2xl text-darkBlue">Active Users</h1>
+
+<div class="grid grid-cols-3 justify-content-between ml-20">
+  <ng-container *ngFor="let user of userArray$ | async">
+    <app-user-card [user] = "user" (delete)="actionToDelete($event)"></app-user-card>
+  </ng-container>
+</div>
+</div>

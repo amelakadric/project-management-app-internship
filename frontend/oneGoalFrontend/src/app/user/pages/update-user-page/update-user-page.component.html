@@ -1,0 +1,52 @@
+<body id="register-body">
+<div class="flex h-full justify-center text-center mt-36" id="container" *ngIf="user$ | async as user">
+
+  <form [formGroup]="updateUserForm" (ngSubmit)="updatedUser()" class="flex flex-col space-y-6 bg-bgGray shadow-inner rounded-lg w-1/3 h-3/4 py-10 ">
+    <h2 class="text-darkBlue font-bold">Update User</h2>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="firstname" class="text-xs text-gray-400 self-start pl-2">First Name: </label>
+      <input type="text" id="firstname" formControlName="firstName" placeholder="{{user.firstname}}" class="input-basic h-7 ml-1.5"/>
+    </div>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="lastname" class="text-xs text-gray-400 self-start pl-2">Last Name: </label>
+      <input id="lastname" formControlName="lastName"  placeholder="{{user.lastname}}" class="input-basic h-7 ml-1.5"/>
+    </div>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="gender" class="text-xs text-gray-400 self-start pl-2">Gender: </label>
+      <select id="gender" formControlName="gender" class="input-basic h-7 ml-1.5" [(ngModel)]="user.gender">
+        <option *ngFor="let gender of Object.values(Genders)" [value]="gender">{{ gender }}</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="phoneNumber" class="text-xs text-gray-400 self-start pl-2">Phone Number: </label>
+      <input id="phoneNumber" formControlName="phoneNumber" placeholder="{{user.phoneNumber}}" class="input-basic h-7 ml-1.5"/>
+    </div>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="email" class="text-xs text-gray-400 self-start pl-2">Email: </label>
+      <input id="email" formControlName="email" placeholder="{{user.email}}" class="input-basic h-7 ml-1.5"/>
+    </div>
+
+    <div *ngIf="showPassword">
+      <label for="password">Password: </label>
+      <input id="password" formControlName="password" [value]="user.password" placeholder="{{user.password}}" class="input-basic h-7 ml-1.5"/>
+    </div>
+
+    <div class="flex flex-col w-50 self-center">
+      <label for="role" class="text-xs text-gray-400 self-start pl-2">Role: </label>
+      <select id="role" formControlName="role" class="input-basic h-7 ml-1.5" [(ngModel)]="user.role">
+        <option *ngFor="let role of Object.values(Roles)" [value]="role">{{ role }}</option>
+      </select>
+    </div>
+
+    <div class="pt-3">
+      <button type="submit" class="btn-basic">Update</button>
+    </div>
+  </form>
+</div>
+</body>
+

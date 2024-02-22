@@ -1,0 +1,26 @@
+<ng-container *ngIf="project">
+<div class="flex flex-col space-y-2 w-80 h-75 shadow-inner bg-bgGray mt-4 mb-4 rounded-lg px-4 py-2">
+  <div class="flex flex-row">
+    <p [routerLink]="['/tickets/', project.id]" class="text-xl font-bold text-darkBlue hover:text-lightBlue">{{project.name}}</p>
+    <app-project-options [role]="role" (action)="responseToAction($event)" class="ml-auto mr-3"></app-project-options>
+  </div>
+
+  <div>
+    <p>Manager: {{project.manager.firstname}} {{project.manager.lastname}}</p>
+  </div>
+
+  <div class="flex flex-row justify-content-between pl-5 pr-5">
+    <div class="flex flex-col">
+      <p class="text-2xl self-center">{{project.employees.length}}</p>
+      <p>Employees</p>
+    </div>
+
+    <div class="flex flex-col">
+      <p class="text-2xl self-center">{{ project.tickets && project.tickets.length > 0 ? project.tickets.length : 0 }}</p>
+      <p>Tickets</p>
+    </div>
+
+  </div>
+</div>
+</ng-container>
+

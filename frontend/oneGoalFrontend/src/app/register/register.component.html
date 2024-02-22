@@ -1,0 +1,39 @@
+<body id="register-body">
+<div class="flex h-full justify-center text-center mt-36" id="container">
+
+  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()" class="flex-col space-y-6 bg-bgGray shadow-inner rounded-lg w-1/3 h-2/3 py-10 ">
+    <h2 class="text-darkBlue">Sign in to continue</h2>
+    <div>
+      <input type="text" id="firstname" formControlName="firstName" placeholder="Firstname" class="input-basic w-50 h-8 ml-1.5"/>
+    </div>
+
+    <div>
+      <input id="lastname" formControlName="lastName" placeholder="Lastname" class="input-basic w-50 h-8 ml-1.5"/>
+    </div>
+
+    <div>
+      <select id="gender" formControlName="gender" class="text-gray-400 input-basic w-50 h-8 ml-1.5">
+        <option value="" disabled selected hidden >Gender</option>
+        <option *ngFor="let gender of Object.values(Genders)" [value]="gender">{{ gender }}</option>
+      </select>
+    </div>
+
+    <div>
+      <input id="phoneNumber" formControlName="phoneNumber" placeholder="Phone Number" class="input-basic w-50 h-8 ml-1.5"/>
+    </div>
+
+    <div>
+      <input id="email" formControlName="email" placeholder="Email" class="input-basic w-50 h-8 ml-1.5"/>
+    </div>
+
+    <div>
+      <input id="password" formControlName="password" placeholder="Password" class="input-basic w-50 h-8 ml-1.5"/>
+    </div>
+
+    <div class="pt-3">
+      <button type="submit" class="btn-basic w-50 h-8">Register</button>
+    </div>
+  </form>
+</div>
+</body>
+
